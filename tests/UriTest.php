@@ -1,10 +1,10 @@
 <?php
-namespace GuzzleHttp\Tests\Psr7;
+namespace Chinook\Tests\Psr7;
 
-use GuzzleHttp\Psr7\Uri;
+use Chinook\Psr7\Uri;
 
 /**
- * @covers GuzzleHttp\Psr7\Uri
+ * @covers Chinook\Psr7\Uri
  */
 class UriTest extends \PHPUnit_Framework_TestCase
 {
@@ -499,12 +499,12 @@ class UriTest extends \PHPUnit_Framework_TestCase
         //  should not use late static binding to access private static members.
         // If they do, this will fatal.
         $this->assertInstanceOf(
-            '\GuzzleHttp\Tests\Psr7\ExtendingClassTest',
+            '\Chinook\Tests\Psr7\ExtendingClassTest',
             new ExtendingClassTest('http://h:9/')
         );
     }
 }
 
-class ExtendingClassTest extends \GuzzleHttp\Psr7\Uri
+class ExtendingClassTest extends \Chinook\Psr7\Uri
 {
 }

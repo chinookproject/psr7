@@ -5,8 +5,7 @@ message implementation, several stream decorators, and some helpful
 functionality like query string parsing.  Currently missing
 ServerRequestInterface and UploadedFileInterface; a pull request for these features is welcome.
 
-
-[![Build Status](https://travis-ci.org/guzzle/psr7.svg?branch=master)](https://travis-ci.org/guzzle/psr7)
+This project is forked from: https://github.com/guzzle/psr7
 
 
 # Stream implementation
@@ -17,12 +16,12 @@ decorators.
 
 ## AppendStream
 
-`GuzzleHttp\Psr7\AppendStream`
+`Chinook\Psr7\AppendStream`
 
 Reads from multiple streams, one after the other.
 
 ```php
-use GuzzleHttp\Psr7;
+use Chinook\Psr7;
 
 $a = Psr7\stream_for('abc, ');
 $b = Psr7\stream_for('123.');
@@ -36,7 +35,7 @@ echo $composed; // abc, 123. Above all listen to me.
 
 ## BufferStream
 
-`GuzzleHttp\Psr7\BufferStream`
+`Chinook\Psr7\BufferStream`
 
 Provides a buffer stream that can be written to fill a buffer, and read
 from to remove bytes from the buffer.
@@ -46,7 +45,7 @@ what the configured high water mark of the stream is, or the maximum
 preferred size of the buffer.
 
 ```php
-use GuzzleHttp\Psr7;
+use Chinook\Psr7;
 
 // When more than 1024 bytes are in the buffer, it will begin returning
 // false to writes. This is an indication that writers should slow down.
@@ -64,7 +63,7 @@ a PHP temp stream so that previously read bytes are cached first in memory,
 then on disk.
 
 ```php
-use GuzzleHttp\Psr7;
+use Chinook\Psr7;
 
 $original = Psr7\stream_for(fopen('http://www.google.com', 'r'));
 $stream = new Psr7\CachingStream($original);
@@ -81,13 +80,13 @@ echo $stream->tell();
 
 ## DroppingStream
 
-`GuzzleHttp\Psr7\DroppingStream`
+`Chinook\Psr7\DroppingStream`
 
 Stream decorator that begins dropping data once the size of the underlying
 stream becomes too full.
 
 ```php
-use GuzzleHttp\Psr7;
+use Chinook\Psr7;
 
 // Create an empty stream
 $stream = Psr7\stream_for();
@@ -102,7 +101,7 @@ echo $stream; // 0123456789
 
 ## FnStream
 
-`GuzzleHttp\Psr7\FnStream`
+`Chinook\Psr7\FnStream`
 
 Compose stream implementations based on a hash of functions.
 
@@ -111,7 +110,7 @@ to create a concrete class for a simple extension point.
 
 ```php
 
-use GuzzleHttp\Psr7;
+use Chinook\Psr7;
 
 $stream = Psr7\stream_for('hi');
 $fnStream = Psr7\FnStream::decorate($stream, [
@@ -129,25 +128,25 @@ $fnStream->rewind();
 
 ## InflateStream
 
-`GuzzleHttp\Psr7\InflateStream`
+`Chinook\Psr7\InflateStream`
 
 Uses PHP's zlib.inflate filter to inflate deflate or gzipped content.
 
 This stream decorator skips the first 10 bytes of the given stream to remove
 the gzip header, converts the provided stream to a PHP stream resource,
 then appends the zlib.inflate filter. The stream is then converted back
-to a Guzzle stream resource to be used as a Guzzle stream.
+to a Chinook stream resource to be used as a Chinook stream.
 
 
 ## LazyOpenStream
 
-`GuzzleHttp\Psr7\LazyOpenStream`
+`Chinook\Psr7\LazyOpenStream`
 
 Lazily reads or writes to a file that is opened only after an IO operation
 take place on the stream.
 
 ```php
-use GuzzleHttp\Psr7;
+use Chinook\Psr7;
 
 $stream = new Psr7\LazyOpenStream('/path/to/file', 'r');
 // The file has not yet been opened...
@@ -159,14 +158,14 @@ echo $stream->read(10);
 
 ## LimitStream
 
-`GuzzleHttp\Psr7\LimitStream`
+`Chinook\Psr7\LimitStream`
 
 LimitStream can be used to read a subset or slice of an existing stream object.
 This can be useful for breaking a large file into smaller pieces to be sent in
 chunks (e.g. Amazon S3's multipart upload API).
 
 ```php
-use GuzzleHttp\Psr7;
+use Chinook\Psr7;
 
 $original = Psr7\stream_for(fopen('/tmp/test.txt', 'r+'));
 echo $original->getSize();
@@ -183,7 +182,7 @@ echo $stream->tell();
 
 ## MultipartStream
 
-`GuzzleHttp\Psr7\MultipartStream`
+`Chinook\Psr7\MultipartStream`
 
 Stream that when read returns bytes for a streaming multipart or
 multipart/form-data stream.
@@ -191,12 +190,12 @@ multipart/form-data stream.
 
 ## NoSeekStream
 
-`GuzzleHttp\Psr7\NoSeekStream`
+`Chinook\Psr7\NoSeekStream`
 
 NoSeekStream wraps a stream and does not allow seeking.
 
 ```php
-use GuzzleHttp\Psr7;
+use Chinook\Psr7;
 
 $original = Psr7\stream_for('foo');
 $noSeek = new Psr7\NoSeekStream($original);
@@ -213,7 +212,7 @@ var_export($noSeek->read(3));
 
 ## PumpStream
 
-`GuzzleHttp\Psr7\PumpStream`
+`Chinook\Psr7\PumpStream`
 
 Provides a read only stream that pumps data from a PHP callable.
 
@@ -228,7 +227,7 @@ false when there is no more data to read.
 ## Implementing stream decorators
 
 Creating a stream decorator is very easy thanks to the
-`GuzzleHttp\Psr7\StreamDecoratorTrait`. This trait provides methods that
+`Chinook\Psr7\StreamDecoratorTrait`. This trait provides methods that
 implement `Psr\Http\Message\StreamInterface` by proxying to an underlying
 stream. Just `use` the `StreamDecoratorTrait` and implement your custom
 methods.
@@ -239,7 +238,7 @@ byte is read from a stream. This could be implemented by overriding the
 
 ```php
 use Psr\Http\Message\StreamInterface;
-use GuzzleHttp\Psr7\StreamDecoratorTrait;
+use Chinook\Psr7\StreamDecoratorTrait;
 
 class EofCallbackStream implements StreamInterface
 {
@@ -270,7 +269,7 @@ class EofCallbackStream implements StreamInterface
 This decorator could be added to any existing stream and used like so:
 
 ```php
-use GuzzleHttp\Psr7;
+use Chinook\Psr7;
 
 $original = Psr7\stream_for('foo');
 
@@ -289,16 +288,16 @@ $eofStream->read(3);
 
 ## PHP StreamWrapper
 
-You can use the `GuzzleHttp\Psr7\StreamWrapper` class if you need to use a
+You can use the `Chinook\Psr7\StreamWrapper` class if you need to use a
 PSR-7 stream as a PHP stream resource.
 
-Use the `GuzzleHttp\Psr7\StreamWrapper::getResource()` method to create a PHP
+Use the `Chinook\Psr7\StreamWrapper::getResource()` method to create a PHP
 stream from a PSR-7 stream.
 
 ```php
-use GuzzleHttp\Psr7\StreamWrapper;
+use Chinook\Psr7\StreamWrapper;
 
-$stream = GuzzleHttp\Psr7\stream_for('hello!');
+$stream = Chinook\Psr7\stream_for('hello!');
 $resource = StreamWrapper::getResource($stream);
 echo fread($resource, 6); // outputs hello!
 ```
@@ -306,7 +305,7 @@ echo fread($resource, 6); // outputs hello!
 
 # Function API
 
-There are various functions available under the `GuzzleHttp\Psr7` namespace.
+There are various functions available under the `Chinook\Psr7` namespace.
 
 
 ## `function str`
@@ -316,8 +315,8 @@ There are various functions available under the `GuzzleHttp\Psr7` namespace.
 Returns the string representation of an HTTP message.
 
 ```php
-$request = new GuzzleHttp\Psr7\Request('GET', 'http://example.com');
-echo GuzzleHttp\Psr7\str($request);
+$request = new Chinook\Psr7\Request('GET', 'http://example.com');
+echo Chinook\Psr7\str($request);
 ```
 
 
@@ -330,8 +329,8 @@ UriInterface for the given value. If the value is already a `UriInterface`, it
 is returned as-is.
 
 ```php
-$uri = GuzzleHttp\Psr7\uri_for('http://example.com');
-assert($uri === GuzzleHttp\Psr7\uri_for($uri));
+$uri = Chinook\Psr7\uri_for('http://example.com');
+assert($uri === Chinook\Psr7\uri_for($uri));
 ```
 
 
@@ -370,8 +369,8 @@ This method accepts the following `$resource` types:
   buffered and used in subsequent reads.
 
 ```php
-$stream = GuzzleHttp\Psr7\stream_for('foo');
-$stream = GuzzleHttp\Psr7\stream_for(fopen('/path/to/file', 'r'));
+$stream = Chinook\Psr7\stream_for('foo');
+$stream = Chinook\Psr7\stream_for(fopen('/path/to/file', 'r'));
 
 $generator function ($bytes) {
     for ($i = 0; $i < $bytes; $i++) {
@@ -379,7 +378,7 @@ $generator function ($bytes) {
     }
 }
 
-$stream = GuzzleHttp\Psr7\stream_for($generator(100));
+$stream = Chinook\Psr7\stream_for($generator(100));
 ```
 
 
@@ -522,10 +521,10 @@ Maps a file extensions to a mimetype.
 
 # Static URI methods
 
-The `GuzzleHttp\Psr7\Uri` class has several static methods to manipulate URIs.
+The `Chinook\Psr7\Uri` class has several static methods to manipulate URIs.
 
 
-## `GuzzleHttp\Psr7\Uri::removeDotSegments`
+## `Chinook\Psr7\Uri::removeDotSegments`
 
 `public static function removeDotSegments($path) -> UriInterface`
 
@@ -534,7 +533,7 @@ Removes dot segments from a path and returns the new path.
 See http://tools.ietf.org/html/rfc3986#section-5.2.4
 
 
-## `GuzzleHttp\Psr7\Uri::resolve`
+## `Chinook\Psr7\Uri::resolve`
 
 `public static function resolve(UriInterface $base, $rel) -> UriInterface`
 
@@ -543,7 +542,7 @@ Resolve a base URI with a relative URI and return a new URI.
 See http://tools.ietf.org/html/rfc3986#section-5
 
 
-## `GuzzleHttp\Psr7\Uri::withQueryValue`
+## `Chinook\Psr7\Uri::withQueryValue`
 
 `public static function withQueryValue(UriInterface $uri, $key, $value) -> UriInterface`
 
@@ -555,7 +554,7 @@ removed and replaced with the given key value pair.
 Note: this function will convert "=" to "%3D" and "&" to "%26".
 
 
-## `GuzzleHttp\Psr7\Uri::withoutQueryValue`
+## `Chinook\Psr7\Uri::withoutQueryValue`
 
 `public static function withoutQueryValue(UriInterface $uri, $key, $value) -> UriInterface`
 
@@ -567,8 +566,8 @@ removed.
 Note: this function will convert "=" to "%3D" and "&" to "%26".
 
 
-## `GuzzleHttp\Psr7\Uri::fromParts`
+## `Chinook\Psr7\Uri::fromParts`
 
 `public static function fromParts(array $parts) -> UriInterface`
 
-Create a `GuzzleHttp\Psr7\Uri` object from a hash of `parse_url` parts.
+Create a `Chinook\Psr7\Uri` object from a hash of `parse_url` parts.

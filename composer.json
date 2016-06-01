@@ -1,14 +1,14 @@
 {
-    "name": "guzzlehttp/psr7",
+    "name": "chinook/psr7",
     "type": "library",
-    "description": "PSR-7 message implementation",
+    "description": "PSR-7 message implementation based on GuzzleHttp",
     "keywords": ["message", "stream", "http", "uri"],
     "license": "MIT",
     "authors": [
         {
-            "name": "Michael Dowling",
-            "email": "mtdowling@gmail.com",
-            "homepage": "https://github.com/mtdowling"
+            "name": "Chinook Project",
+            "email": "em@il.com",
+            "homepage": "https://github.com/chinookproject"
         }
     ],
     "require": {
@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "GuzzleHttp\\Psr7\\": "src/"
+            "Chinook\\Psr7\\": "src/"
         },
         "files": ["src/functions_include.php"]
     },

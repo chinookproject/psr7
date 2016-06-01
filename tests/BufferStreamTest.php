@@ -1,7 +1,7 @@
 <?php
-namespace GuzzleHttp\Tests\Psr7;
+namespace Chinook\Tests\Psr7;
 
-use GuzzleHttp\Psr7\BufferStream;
+use Chinook\Psr7\BufferStream;
 
 class BufferStreamTest extends \PHPUnit_Framework_TestCase
 {

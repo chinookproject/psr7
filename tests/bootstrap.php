@@ -1,5 +1,5 @@
 <?php
-namespace GuzzleHttp\Tests\Psr7;
+namespace Chinook\Tests\Psr7;
 
 require __DIR__ . '/../vendor/autoload.php';
 

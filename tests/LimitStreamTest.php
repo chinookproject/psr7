@@ -1,14 +1,14 @@
 <?php
-namespace GuzzleHttp\Tests\Psr7;
+namespace Chinook\Tests\Psr7;
 
-use GuzzleHttp\Psr7;
-use GuzzleHttp\Psr7\FnStream;
-use GuzzleHttp\Psr7\Stream;
-use GuzzleHttp\Psr7\LimitStream;
-use GuzzleHttp\Psr7\NoSeekStream;
+use Chinook\Psr7;
+use Chinook\Psr7\FnStream;
+use Chinook\Psr7\Stream;
+use Chinook\Psr7\LimitStream;
+use Chinook\Psr7\NoSeekStream;
 
 /**
- * @covers GuzzleHttp\Psr7\LimitStream
+ * @covers Chinook\Psr7\LimitStream
  */
 class LimitStreamTest extends \PHPUnit_Framework_TestCase
 {

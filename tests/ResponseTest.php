@@ -1,12 +1,12 @@
 <?php
-namespace GuzzleHttp\Tests\Psr7;
+namespace Chinook\Tests\Psr7;
 
-use GuzzleHttp\Psr7\Response;
-use GuzzleHttp\Psr7;
+use Chinook\Psr7\Response;
+use Chinook\Psr7;
 
 /**
- * @covers GuzzleHttp\Psr7\MessageTrait
- * @covers GuzzleHttp\Psr7\Response
+ * @covers Chinook\Psr7\MessageTrait
+ * @covers Chinook\Psr7\Response
  */
 class ResponseTest extends \PHPUnit_Framework_TestCase
 {

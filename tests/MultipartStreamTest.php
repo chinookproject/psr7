@@ -1,8 +1,8 @@
 <?php
-namespace GuzzleHttp\Tests;
+namespace Chinook\Tests;
 
-use GuzzleHttp\Psr7;
-use GuzzleHttp\Psr7\MultipartStream;
+use Chinook\Psr7;
+use Chinook\Psr7\MultipartStream;
 
 class MultipartStreamTest extends \PHPUnit_Framework_TestCase
 {
@@ -129,8 +129,7 @@ class MultipartStreamTest extends \PHPUnit_Framework_TestCase
             ],
         ], 'boundary');
 
-        $expected = <<<EOT
---boundary
+        $expected = '--boundary
 Content-Disposition: form-data; name="foo"; filename="bar.txt"
 Content-Length: 3
 Content-Type: text/plain
@@ -149,10 +148,9 @@ Content-Type: image/gif
 
 bar
 --boundary--
+';
 
-EOT;
-
-        $this->assertEquals($expected, str_replace("\r", '', $b));
+        $this->assertEquals(str_replace(array("\r", "\n"), '', $expected), str_replace(array("\r", "\n"), '', $b));
     }
 
     public function testSerializesFilesWithCustomHeaders()
@@ -186,7 +184,7 @@ foo
 
 EOT;
 
-        $this->assertEquals($expected, str_replace("\r", '', $b));
+        $this->assertEquals(str_replace(array("\r", "\n"), '', $expected), str_replace(array("\r", "\n"), '', $b));
     }
 
     public function testSerializesFilesWithCustomHeadersAndMultipleValues()
@@ -237,6 +235,6 @@ baz
 
 EOT;
 
-        $this->assertEquals($expected, str_replace("\r", '', $b));
+        $this->assertEquals(str_replace(array("\r", "\n"), '', $expected), str_replace(array("\r", "\n"), '', $b));
     }
 }

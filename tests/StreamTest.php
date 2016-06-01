@@ -1,11 +1,11 @@
 <?php
-namespace GuzzleHttp\Tests\Psr7;
+namespace Chinook\Tests\Psr7;
 
-use GuzzleHttp\Psr7\NoSeekStream;
-use GuzzleHttp\Psr7\Stream;
+use Chinook\Psr7\NoSeekStream;
+use Chinook\Psr7\Stream;
 
 /**
- * @covers GuzzleHttp\Psr7\Stream
+ * @covers Chinook\Psr7\Stream
  */
 class StreamTest extends \PHPUnit_Framework_TestCase
 {
@@ -154,7 +154,7 @@ class StreamTest extends \PHPUnit_Framework_TestCase
 
     public function testDoesNotThrowInToString()
     {
-        $s = \GuzzleHttp\Psr7\stream_for('foo');
+        $s = \Chinook\Psr7\stream_for('foo');
         $s = new NoSeekStream($s);
         $this->assertEquals('foo', (string) $s);
     }

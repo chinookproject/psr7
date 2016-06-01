@@ -1,11 +1,11 @@
 <?php
-namespace GuzzleHttp\Tests\Psr7;
+namespace Chinook\Tests\Psr7;
 
-use GuzzleHttp\Psr7\StreamWrapper;
-use GuzzleHttp\Psr7;
+use Chinook\Psr7\StreamWrapper;
+use Chinook\Psr7;
 
 /**
- * @covers GuzzleHttp\Psr7\StreamWrapper
+ * @covers Chinook\Psr7\StreamWrapper
  */
 class StreamWrapperTest extends \PHPUnit_Framework_TestCase
 {

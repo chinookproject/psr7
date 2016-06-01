@@ -1,12 +1,12 @@
 <?php
-namespace GuzzleHttp\Tests\Psr7;
+namespace Chinook\Tests\Psr7;
 
-use GuzzleHttp\Psr7;
-use GuzzleHttp\Psr7\NoSeekStream;
+use Chinook\Psr7;
+use Chinook\Psr7\NoSeekStream;
 
 /**
- * @covers GuzzleHttp\Psr7\NoSeekStream
- * @covers GuzzleHttp\Psr7\StreamDecoratorTrait
+ * @covers Chinook\Psr7\NoSeekStream
+ * @covers Chinook\Psr7\StreamDecoratorTrait
  */
 class NoSeekStreamTest extends \PHPUnit_Framework_TestCase
 {

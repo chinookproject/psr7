@@ -1,11 +1,11 @@
 <?php
-namespace GuzzleHttp\Tests\Psr7;
+namespace Chinook\Tests\Psr7;
 
-use GuzzleHttp\Psr7;
-use GuzzleHttp\Psr7\CachingStream;
+use Chinook\Psr7;
+use Chinook\Psr7\CachingStream;
 
 /**
- * @covers GuzzleHttp\Psr7\CachingStream
+ * @covers Chinook\Psr7\CachingStream
  */
 class CachingStreamTest extends \PHPUnit_Framework_TestCase
 {
@@ -74,7 +74,7 @@ class CachingStreamTest extends \PHPUnit_Framework_TestCase
     public function testRewindUsesSeek()
     {
         $a = Psr7\stream_for('foo');
-        $d = $this->getMockBuilder('GuzzleHttp\Psr7\CachingStream')
+        $d = $this->getMockBuilder('Chinook\Psr7\CachingStream')
             ->setMethods(array('seek'))
             ->setConstructorArgs(array($a))
             ->getMock();
@@ -104,7 +104,7 @@ class CachingStreamTest extends \PHPUnit_Framework_TestCase
         fwrite($stream, 'testing');
         fseek($stream, 0);
 
-        $this->decorated = $this->getMockBuilder('\GuzzleHttp\Psr7\Stream')
+        $this->decorated = $this->getMockBuilder('\Chinook\Psr7\Stream')
             ->setConstructorArgs([$stream])
             ->setMethods(['read'])
             ->getMock();

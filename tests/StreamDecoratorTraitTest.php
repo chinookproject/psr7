@@ -1,9 +1,9 @@
 <?php
-namespace GuzzleHttp\Tests\Psr7;
+namespace Chinook\Tests\Psr7;
 
 use Psr\Http\Message\StreamInterface;
-use GuzzleHttp\Psr7;
-use GuzzleHttp\Psr7\StreamDecoratorTrait;
+use Chinook\Psr7;
+use Chinook\Psr7\StreamDecoratorTrait;
 
 class Str implements StreamInterface
 {
@@ -11,7 +11,7 @@ class Str implements StreamInterface
 }
 
 /**
- * @covers GuzzleHttp\Psr7\StreamDecoratorTrait
+ * @covers Chinook\Psr7\StreamDecoratorTrait
  */
 class StreamDecoratorTraitTest extends \PHPUnit_Framework_TestCase
 {

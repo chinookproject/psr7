@@ -1,11 +1,11 @@
 <?php
-namespace GuzzleHttp\Tests\Psr7;
+namespace Chinook\Tests\Psr7;
 
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Psr7\Uri;
+use Chinook\Psr7\Request;
+use Chinook\Psr7\Uri;
 
 /**
- * @covers GuzzleHttp\Psr7\Request
+ * @covers Chinook\Psr7\Request
  */
 class RequestTest extends \PHPUnit_Framework_TestCase
 {

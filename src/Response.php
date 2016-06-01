@@ -1,5 +1,5 @@
 <?php
-namespace GuzzleHttp\Psr7;
+namespace Chinook\Psr7;
 
 use Psr\Http\Message\ResponseInterface;
 

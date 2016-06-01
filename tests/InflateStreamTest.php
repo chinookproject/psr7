@@ -1,8 +1,8 @@
 <?php
-namespace GuzzleHttp\Tests\Psr7;
+namespace Chinook\Tests\Psr7;
 
-use GuzzleHttp\Psr7;
-use GuzzleHttp\Psr7\InflateStream;
+use Chinook\Psr7;
+use Chinook\Psr7\InflateStream;
 
 class InflateStreamtest extends \PHPUnit_Framework_TestCase
 {
